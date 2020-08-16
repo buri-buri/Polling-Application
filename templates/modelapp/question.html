@@ -6,23 +6,34 @@
         <div class="row">
             <h1>{{question.content}}</h1>
         </div>
-
-        <div class="row">
-            <div class="col-6">
-                <div class="collection">
-                    {% for choice in question.choice_set.all %}
-                        <div class="collection-item">
-                            <label>
-                             <input class="with-gap" name="group1" type="radio"  />
-                              <span>{{choice.content}}</span>
-                            </label>
-                        </div>
-                    {% endfor %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-6">
+                    <div class="collection">
+                        {% for choice in question.choice_set.all %}
+                            <div class="collection-item">
+                                <label>
+                                <input class="with-gap" name="choice" type="radio" value={{choice.id}} />
+                                  <span>{{choice.content}}</span>
+                                </label>
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <button class="btn wqaves-effect waves-light" type="submit" name="action">Submit</button>
-        </div>
+            <div class="row">
+                <button class="btn wqaves-effect waves-light"   type="submit" name="action">Submit</button>
+            </div>
+            <div class="row">
+                <p class="red">
+                    <ul>
+                        {% for error in form.errors %}
+                            <li>{{error}}</li>
+                        {% endfor %}
+                    </ul>
+                </p>
+            </div>
+        </form>
     </div>
 {% endblock %}
