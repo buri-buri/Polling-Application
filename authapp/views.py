@@ -4,4 +4,4 @@ from django.contrib.auth.views import LoginView,LogoutView as Logout
 
 class Login(LoginView):
     template_name='authapp/login.html'
-    redirect_authenticated_user=True
+    redirect_authenticated_user=False

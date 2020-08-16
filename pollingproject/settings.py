@@ -20,6 +20,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'authapp',
+    'modelapp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
